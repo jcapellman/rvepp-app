@@ -1,0 +1,6 @@
+[package]
+name = "rvepp"
+version = "2024.7.0"
+edition = "2021"
+
+[dependencies]
