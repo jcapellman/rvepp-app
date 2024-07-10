@@ -2,6 +2,14 @@
 name = "rvepp"
 version = "2024.7.0"
 edition = "2021"
+publish = false
+
+[workspace]
+members = [
+    "crates/rvepp_protection_layers"]
+
+[workspace.package]
+version = "2024.7.0"
 
 [dependencies]
-inotify = "0.10.2"
+rvepp_protection_layers = { path = "crates/rvepp_protection_layers", optional = true }
