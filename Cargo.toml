@@ -11,5 +11,5 @@ members = [
 [workspace.package]
 version = "2024.7.0"
 
-[dependencies]
-rvepp_protection_layers = { path = "crates/rvepp_protection_layers", platform = "linux" }
+[target.'cfg(unix)'.dependencies]
+rvepp_protection_layers = { path = "crates/rvepp_protection_layers" }
