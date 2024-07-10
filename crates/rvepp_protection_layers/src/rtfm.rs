@@ -9,39 +9,30 @@ use inotify::{
     Inotify,
 };
 
-pub struct RTFM {
-    inotify: Inotify
+pub struct Rtfm {
+
 }
 
-impl RTFM {}
-
-impl ProtectionLayer for RTFM {
-
-    fn initialize(&self) {
-        inotify = Inotify::init()
+impl ProtectionLayer for Rtfm {
+    fn initialize(&mut self) {
+        let mut pl_inotify = Inotify::init()
             .expect("Failed to initialize inotify");
 
         let current_dir = env::current_dir()
             .expect("Failed to determine current directory");
 
-        inotify
+        pl_inotify
             .watches()
             .add(
                 current_dir,
                 WatchMask::MODIFY | WatchMask::CREATE | WatchMask::DELETE,
             )
             .expect("Failed to add inotify watch");
-    }
 
-    fn shutdown(&self) {
-        // Inotify
-    }
-
-    fn run(&self) {
         let mut buffer = [0u8; 4096];
 
         loop {
-            let events = inotify
+            let events = pl_inotify
                 .read_events_blocking(&mut buffer)
                 .expect("Failed to read inotify events");
 
@@ -67,5 +58,13 @@ impl ProtectionLayer for RTFM {
                 }
             }
         }
+    }
+
+    fn shutdown(&mut self) {
+        // Inotify
+    }
+
+    fn run(&mut self) {
+
     }
 }

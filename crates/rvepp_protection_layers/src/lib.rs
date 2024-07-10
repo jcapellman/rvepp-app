@@ -1,9 +1,9 @@
-mod rtfm;
+pub mod rtfm;
 
-trait ProtectionLayer {
-    fn initialize(&self);
+pub trait ProtectionLayer {
+    fn initialize(&mut self);
 
-    fn shutdown(&self);
+    fn shutdown(&mut self);
 
-    fn run(&self);
+    fn run(&mut self);
 }

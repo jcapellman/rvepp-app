@@ -12,4 +12,4 @@ members = [
 version = "2024.7.0"
 
 [dependencies]
-rvepp_protection_layers = { path = "crates/rvepp_protection_layers", optional = true }
+rvepp_protection_layers = { path = "crates/rvepp_protection_layers", platform = "linux" }

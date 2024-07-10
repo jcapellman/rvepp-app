@@ -1,11 +1,12 @@
 #[cfg(target_os = "linux")]
-use rvepp_protection_layers::{RTFM};
+use rvepp_protection_layers::ProtectionLayer;
+use rvepp_protection_layers::{rtfm};
 
 #[cfg(target_os = "linux")]
 fn main() {
-    let rtfm = RTFM { };
+    let mut real_time_file_monitoring = rtfm::Rtfm { };
 
-    rtfm.initialize();
+    real_time_file_monitoring.initialize();
 }
 
 #[cfg(not(target_os = "linux"))]
