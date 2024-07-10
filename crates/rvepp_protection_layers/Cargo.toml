@@ -1,0 +1,7 @@
+[package]
+name = "rvepp_protection_layers"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+inotify = "0.10.2"
