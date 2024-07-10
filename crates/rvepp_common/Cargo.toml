@@ -1,0 +1,3 @@
+[package]
+name = "rvepp_common"
+edition = "2021"

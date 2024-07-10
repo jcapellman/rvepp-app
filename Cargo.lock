@@ -170,9 +170,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "rvepp_common"
+version = "0.0.0"
+
+[[package]]
 name = "rvepp_configuration"
 version = "0.0.0"
 dependencies = [
+ "rvepp_common",
  "serde",
  "serde_json",
 ]

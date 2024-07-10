@@ -1,0 +1,1 @@
+pub const CONFIGURATION_FILE_NAME: &str = "config.json";
