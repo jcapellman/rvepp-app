@@ -6,10 +6,11 @@ publish = false
 
 [workspace]
 members = [
-    "crates/rvepp_protection_layers"]
+    "crates/rvepp_protection_layers", "crates/rvepp_configuration"]
 
 [workspace.package]
 version = "2024.7.0"
 
 [target.'cfg(unix)'.dependencies]
 rvepp_protection_layers = { path = "crates/rvepp_protection_layers" }
+rvepp_configuration = { path = "crates/rvepp_configuration" }
