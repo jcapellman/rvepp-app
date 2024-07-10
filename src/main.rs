@@ -1,6 +1,5 @@
 #[cfg(target_os = "linux")]
-use rvepp_protection_layers::ProtectionLayer;
-use rvepp_protection_layers::{rtfm};
+use rvepp_protection_layers::{ProtectionLayer, rtfm};
 
 #[cfg(target_os = "linux")]
 fn main() {
@@ -11,5 +10,5 @@ fn main() {
 
 #[cfg(not(target_os = "linux"))]
 fn main() {
-    println!("rvepp only supports Linux...exiting...")
+    println!("rvepp only supports Linux - shutting down")
 }
