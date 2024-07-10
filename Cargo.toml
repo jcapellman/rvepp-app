@@ -4,3 +4,4 @@ version = "2024.7.0"
 edition = "2021"
 
 [dependencies]
+inotify = "0.10.2"
