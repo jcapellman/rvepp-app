@@ -1,56 +1,14 @@
-extern crate inotify;
+#[cfg(target_os = "linux")]
+use rvepp_protection_layers::{RTFM};
 
-use inotify::{
-    EventMask,
-    WatchMask,
-    Inotify,
-};
-
-use std::env;
-
+#[cfg(target_os = "linux")]
 fn main() {
-    let mut inotify = Inotify::init()
-        .expect("Failed to initialize inotify");
+    let rtfm = RTFM { };
 
-    let current_dir = env::current_dir()
-        .expect("Failed to determine current directory");
+    rtfm.initialize();
+}
 
-    println!("{:?}", current_dir);
-
-    inotify
-        .watches()
-        .add(
-            current_dir,
-            WatchMask::MODIFY | WatchMask::CREATE | WatchMask::DELETE,
-        )
-        .expect("Failed to add inotify watch");
-
-    let mut buffer = [0u8; 4096];
-    loop {
-        let events = inotify
-            .read_events_blocking(&mut buffer)
-            .expect("Failed to read inotify events");
-
-        for event in events {
-            if event.mask.contains(EventMask::CREATE) {
-                if event.mask.contains(EventMask::ISDIR) {
-                    println!("Directory created: {:?}", event.name);
-                } else {
-                    println!("File created: {:?}", event.name);
-                }
-            } else if event.mask.contains(EventMask::DELETE) {
-                if event.mask.contains(EventMask::ISDIR) {
-                    println!("Directory deleted: {:?}", event.name);
-                } else {
-                    println!("File deleted: {:?}", event.name);
-                }
-            } else if event.mask.contains(EventMask::MODIFY) {
-                if event.mask.contains(EventMask::ISDIR) {
-                    println!("Directory modified: {:?}", event.name);
-                } else {
-                    println!("File modified: {:?}", event.name);
-                }
-            }
-        }
-    }
+#[cfg(not(target_os = "linux"))]
+fn main() {
+    println!("rvepp only supports Linux...exiting...")
 }
