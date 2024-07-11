@@ -172,8 +172,16 @@ dependencies = [
 name = "rvepp_cli"
 version = "2024.7.0"
 dependencies = [
+ "rvepp_cmdl_args",
  "rvepp_configuration",
  "rvepp_protection_layers",
+]
+
+[[package]]
+name = "rvepp_cmdl_args"
+version = "2024.7.0"
+dependencies = [
+ "rvepp_common",
 ]
 
 [[package]]
