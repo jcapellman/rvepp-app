@@ -5,8 +5,8 @@ pub struct InternalVars {
 
 fn create_default_internal_vars() -> InternalVars {
     return InternalVars {
-        config_filename: rvepp_common::CONFIGURATION_FILE_NAME.to_string(),
-        config_path: rvepp_common::CONFIGURATION_BASE_PATH.to_string()
+        config_filename: rvepp_common::constants::CONFIGURATION_FILE_NAME.to_string(),
+        config_path: rvepp_common::constants::CONFIGURATION_BASE_PATH.to_string()
     };
 }
 
