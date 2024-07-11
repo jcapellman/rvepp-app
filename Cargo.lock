@@ -192,6 +192,7 @@ version = "0.0.0"
 name = "rvepp_configuration"
 version = "0.0.0"
 dependencies = [
+ "rvepp_cmdl_args",
  "rvepp_common",
  "serde",
  "serde_json",
