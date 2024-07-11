@@ -5,11 +5,15 @@ pub fn run() {
     println!("(C) 2024 Jarred Capellman");
     println!("Source code is available on https://github.com/jcapellman/rvepp");
 
-    let args: Vec<String> = env::args().collect();
+    let _args: Vec<String> = env::args().collect();
 
-    let config = rvepp_configuration::Config {
-        management_url: "https://rvepp.io".to_string(),
-        rtfm: true
+    // TODO: Parse args to allow local overrides like the config location - for now only accept the config
+
+    let config = match rvepp_configuration::load_config() {
+        None => {
+            panic!("Failed to load configuration - exiting");
+        }
+        Some(val) => val
     };
 
     let protection_manager = rvepp_protection_layers::protection_layer_manager::ProtectionLayerManager { };
