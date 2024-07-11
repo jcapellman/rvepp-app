@@ -1,5 +1,6 @@
 use serde::{Serialize, Deserialize};
 use std::fs;
+use rvepp_cmdl_args::InternalVars;
 
 #[derive(Serialize, Deserialize)]
 pub struct Config {
@@ -20,8 +21,8 @@ fn json_to_config(json_string: String) -> Option<Config> {
     };
 }
 
-fn validate_path() -> Option<bool> {
-    return match fs::create_dir_all(rvepp_common::CONFIGURATION_BASE_PATH) {
+fn validate_path(path: &String) -> Option<bool> {
+    return match fs::create_dir_all(path) {
         Ok(_) => {
             println!("Configuration path did not exist and was created");
 
@@ -57,12 +58,12 @@ fn create_default_file(full_path: String) -> Option<Config> {
     };
 }
 
-pub fn load_config() -> Option<Config> {
-    if validate_path() == None {
+pub fn load_config(internal_vars: InternalVars) -> Option<Config> {
+    if validate_path(&internal_vars.config_path) == None {
         return None;
     }
 
-    let full_path = rvepp_common::CONFIGURATION_BASE_PATH.to_string() + rvepp_common::CONFIGURATION_FILE_NAME;
+    let full_path = internal_vars.config_path + &*internal_vars.config_filename;
 
     if !fs::metadata(full_path.clone()).is_ok() {
         return create_default_file(full_path);
