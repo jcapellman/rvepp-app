@@ -165,6 +165,13 @@ checksum = "719b953e2095829ee67db738b3bfa9fa368c94900df327b3f07fe6e794d2fe1f"
 name = "rvepp"
 version = "2024.7.0"
 dependencies = [
+ "rvepp_cli",
+]
+
+[[package]]
+name = "rvepp_cli"
+version = "2024.7.0"
+dependencies = [
  "rvepp_configuration",
  "rvepp_protection_layers",
 ]
