@@ -5,9 +5,9 @@ pub fn run() {
     println!("(C) 2024 Jarred Capellman");
     println!("Source code is available on https://github.com/jcapellman/rvepp");
 
-    let _args: Vec<String> = env::args().collect();
+    let args: Vec<String> = env::args().collect();
 
-    // TODO: Parse args to allow local overrides like the config location - for now only accept the config
+    let internal_vars = rvepp_cmdl_args::parse_args(args);
 
     let config = match rvepp_configuration::load_config() {
         None => {
