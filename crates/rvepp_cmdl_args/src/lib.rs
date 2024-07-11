@@ -1,6 +1,6 @@
 pub struct InternalVars {
-    config_path: String,
-    config_filename: String
+    pub config_path: String,
+    pub config_filename: String
 }
 
 fn create_default_internal_vars() -> InternalVars {
@@ -18,7 +18,7 @@ pub fn parse_args(args: Vec<String>) -> InternalVars {
         return internal_vars;
     }
 
-    if (args.len() - 1) % 2  == 0 {
+    if (args.len() - 1) % 2  != 0 {
         println!("Invalid number of arguments - using defaults");
 
         return internal_vars;
