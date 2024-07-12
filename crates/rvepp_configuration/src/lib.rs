@@ -8,15 +8,15 @@ pub struct Config {
     pub rtfm: bool
 }
 
-fn json_to_config(json_string: String) -> Option<Config> {
+fn json_to_config(json_string: String) -> Config {
     return match serde_json::from_str::<Config>(&json_string) {
         Ok(config) => {
-            Some(config)
+            config
         }
         Err(err) => {
-            println!("Error creating the configuration due to: {err}");
+            println!("Error creating the configuration - using defaults, error: {err}");
 
-            None
+            create_default_config()
         }
     };
 }
@@ -43,24 +43,24 @@ fn create_default_config() -> Config {
     };
 }
 
-fn create_default_file(full_path: String) -> Option<Config> {
+fn create_default_file(full_path: String) -> Config {
     let config = create_default_config();
 
     let json_string = serde_json::to_string(&config).expect("Failure in serializing the configuration");
 
     return match fs::write(full_path.clone(), json_string) {
-        Ok(_) => Some(config),
+        Ok(_) => config,
         Err(err) => {
             println!("Error writing default config to {full_path} due to: {err}");
 
-            None
+            return config;
         }
     };
 }
 
-pub fn load_config(internal_vars: InternalVars) -> Option<Config> {
+pub fn load_config(internal_vars: InternalVars) -> Config {
     if validate_path(&internal_vars.config_path) == None {
-        return None;
+        return create_default_config();
     }
 
     let full_path = internal_vars.config_path + &*internal_vars.config_filename;
@@ -72,9 +72,9 @@ pub fn load_config(internal_vars: InternalVars) -> Option<Config> {
     return match fs::read_to_string(&full_path) {
         Ok(json_string) => json_to_config(json_string),
         Err(err) => {
-            println!("Failed to read configuration file: {err}");
+            println!("Failed to read configuration file using defaults, error: {err}");
 
-            None
+            return create_default_config();
         }
     }
 }
