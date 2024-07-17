@@ -1,5 +1,6 @@
 use serde::{Serialize, Deserialize};
 use std::fs;
+use std::path::Path;
 use rvepp_cmdl_args::InternalVars;
 
 #[derive(Serialize, Deserialize)]
@@ -22,9 +23,15 @@ fn json_to_config(json_string: String) -> Config {
 }
 
 fn validate_path(path: &String) -> Option<bool> {
+    if Path::new(path).exists() {
+        println!("Configuration path exists {}, attempting to read file...", path);
+
+        return Some(true);
+    }
+
     return match fs::create_dir_all(path) {
         Ok(_) => {
-            println!("Configuration path did not exist and was created");
+            println!("Configuration path did not exist and was created {}", path);
 
             Some(true)
         }
@@ -38,7 +45,7 @@ fn validate_path(path: &String) -> Option<bool> {
 
 fn create_default_config() -> Config {
     return Config {
-        management_url: "https://rvepp.io".to_string(),
+        management_url: rvepp_common::constants::CONFIGURATION_URL.to_string(),
         rtfm: true
     };
 }
