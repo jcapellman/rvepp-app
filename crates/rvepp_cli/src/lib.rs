@@ -9,7 +9,14 @@ pub fn run() {
 
     let internal_vars = rvepp_cmdl_args::parse_args(args);
 
-    let config = rvepp_configuration::load_config(internal_vars);
+    let config = match rvepp_configuration::load_config(internal_vars) {
+        None => {
+            panic!("Failed to load configuration - exiting");
+        }
+        Some(val) => val
+    };
+
+    println!("Starting the Protection Layers...");
 
     let protection_manager = rvepp_protection_layers::protection_layer_manager::ProtectionLayerManager { };
 
