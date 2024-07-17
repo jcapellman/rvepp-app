@@ -1,3 +1,6 @@
 [package]
 name = "rvepp_common"
 edition = "2021"
+
+[dependencies]
+log = "0.4.22"
