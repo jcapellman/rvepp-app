@@ -1,4 +1,6 @@
 use std::env;
+use std::thread;
+use std::time::Duration;
 
 pub fn run() {
     println!("rvepp {}", env!("CARGO_PKG_VERSION"));
@@ -21,5 +23,9 @@ pub fn run() {
         Some(true) => println!("Initialized the Protection Manager"),
         Some(false) => println!("Failed to Initialize the Protection Manager"),
         None => println!("Error occurred")
+    }
+
+    loop {
+        thread::sleep(Duration::from_secs(1));
     }
 }
