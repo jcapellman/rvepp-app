@@ -3,9 +3,11 @@ use std::thread;
 use std::time::Duration;
 
 pub fn run() {
-    println!("rvepp {}", env!("CARGO_PKG_VERSION"));
+    println!("---------------------------------------");
+    println!("RVEPP {}", env!("CARGO_PKG_VERSION"));
     println!("(C) 2024 Jarred Capellman");
-    println!("Source code is available on https://github.com/jcapellman/rvepp");
+    println!("https://github.com/jcapellman/rvepp-app");
+    println!("---------------------------------------");
 
     let args: Vec<String> = env::args().collect();
 
@@ -26,6 +28,6 @@ pub fn run() {
     }
 
     loop {
-        thread::sleep(Duration::from_secs(1));
+        thread::sleep(Duration::from_millis(100));
     }
 }
