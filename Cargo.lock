@@ -97,6 +97,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "97b3888a4aecf77e811145cadf6eef5901f4782c53886191b2f693f24761847c"
 
 [[package]]
+name = "log"
+version = "0.4.22"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a7a70ba024b9dc04c27ea2f0c0548feb474ec5c54bba33a7f72f873a39d07b24"
+
+[[package]]
 name = "memchr"
 version = "2.7.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -172,7 +178,9 @@ dependencies = [
 name = "rvepp_cli"
 version = "2024.7.0"
 dependencies = [
+ "log",
  "rvepp_cmdl_args",
+ "rvepp_common",
  "rvepp_configuration",
  "rvepp_protection_layers",
 ]
@@ -187,6 +195,9 @@ dependencies = [
 [[package]]
 name = "rvepp_common"
 version = "0.0.0"
+dependencies = [
+ "log",
+]
 
 [[package]]
 name = "rvepp_configuration"

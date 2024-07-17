@@ -6,4 +6,6 @@ version.workspace = true
 [dependencies]
 rvepp_protection_layers = { path = "../rvepp_protection_layers" }
 rvepp_configuration = { path = "../rvepp_configuration" }
+rvepp_common = { path = "../rvepp_common"}
 rvepp_cmdl_args = { path = "../rvepp_cmdl_args"}
+log = "0.4.22"
