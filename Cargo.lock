@@ -199,6 +199,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "rvepp_ml"
+version = "2024.7.0"
+
+[[package]]
 name = "rvepp_protection_layers"
 version = "0.1.0"
 dependencies = [

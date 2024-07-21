@@ -6,7 +6,7 @@ publish = false
 
 [workspace]
 members = [
-    "crates/rvepp_protection_layers", "crates/rvepp_configuration", "crates/rvepp_common", "crates/rvepp_cli", "crates/rvepp_cmdl_args"]
+    "crates/rvepp_protection_layers", "crates/rvepp_configuration", "crates/rvepp_common", "crates/rvepp_cli", "crates/rvepp_cmdl_args", "crates/rvepp_ml"]
 
 [workspace.package]
 version = "2024.7.0"
