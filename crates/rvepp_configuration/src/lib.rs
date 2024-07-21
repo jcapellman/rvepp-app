@@ -6,6 +6,7 @@ use rvepp_cmdl_args::InternalVars;
 #[derive(Serialize, Deserialize)]
 pub struct Config {
     pub management_url: String,
+    pub model_elf_file_name: String,
     pub rtfm: bool
 }
 
@@ -46,7 +47,8 @@ fn validate_path(path: &String) -> Option<bool> {
 fn create_default_config() -> Config {
     return Config {
         management_url: rvepp_common::constants::CONFIGURATION_URL.to_string(),
-        rtfm: true
+        rtfm: true,
+        model_elf_file_name: rvepp_common::constants::CONFIGURATION_MODEL_ELF_FILE_NAME.to_string()
     };
 }
 
