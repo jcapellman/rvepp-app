@@ -1,0 +1,11 @@
+[Unit]
+Description=RVEPP Endpoint Protection
+
+[Service]
+ExecStart=/usr/local/rvepp/bin/rvepp
+ExecReload=/usr/local/rvepp/bin/rvepp
+Type=exec
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
