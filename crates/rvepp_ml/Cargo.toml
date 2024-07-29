@@ -4,3 +4,4 @@ edition = "2021"
 version.workspace = true
 
 [dependencies]
+lightgbm = "0.2.3"

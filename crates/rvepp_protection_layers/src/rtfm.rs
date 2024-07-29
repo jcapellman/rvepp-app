@@ -1,7 +1,8 @@
 use std::env;
 use std::thread;
 use crate::ProtectionLayer;
-
+use rvepp_ml::MachineLearningModel;
+use rvepp_ml::ml_elf_model::ElfModel;
 extern crate inotify;
 
 use inotify::{
@@ -16,6 +17,11 @@ pub struct Rtfm {
 
 impl ProtectionLayer for Rtfm {
     fn initialize(&mut self) {
+        let model = ElfModel { };
+
+        model.init();
+
+        
         thread::spawn(|| {
             let mut pl_inotify = Inotify::init()
                 .expect("Failed to initialize inotify");

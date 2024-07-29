@@ -6,3 +6,4 @@ edition = "2021"
 [dependencies]
 inotify = "0.10.2"
 rvepp_configuration = { path = "../rvepp_configuration"}
+rvepp_ml = { path = "../rvepp_ml" }

@@ -1,6 +1,5 @@
-mod ml_elf_model;
+pub mod ml_elf_model;
 
-trait MachineLearningModel {
-    fn init(&self);
-
+pub trait MachineLearningModel {
+     fn init(&self);
 }
