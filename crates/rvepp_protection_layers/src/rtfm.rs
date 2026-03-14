@@ -37,7 +37,7 @@ impl ProtectionLayer for Rtfm {
                 )
                 .expect("Failed to add inotify watch");
 
-            let mut buffer = [0u8; 4096];
+            let mut buffer = [0u8; 16384];
 
             loop {
                 let events = pl_inotify

@@ -1,6 +1,6 @@
 use std::env;
 use std::thread;
-use std::time::Duration;
+
 
 use log::{LevelFilter};
 use log::{info, error};
@@ -33,6 +33,6 @@ pub fn run() {
     }
 
     loop {
-        thread::sleep(Duration::from_millis(100));
+        thread::park();
     }
 }

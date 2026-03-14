@@ -68,13 +68,13 @@ fn create_default_file(full_path: String) -> Config {
 }
 
 pub fn load_config(internal_vars: InternalVars) -> Config {
-    if validate_path(&internal_vars.config_path) == None {
+    if validate_path(&internal_vars.config_path) .is_none() {
         return create_default_config();
     }
 
     let full_path = internal_vars.config_path + &*internal_vars.config_filename;
 
-    if !fs::metadata(full_path.clone()).is_ok() {
+    if !Path::new(&full_path).exists() {
         return create_default_file(full_path);
     }
 

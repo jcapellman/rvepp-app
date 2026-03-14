@@ -13,3 +13,8 @@ version = "2024.7.0"
 
 [target.'cfg(unix)'.dependencies]
 rvepp_cli = { path = "crates/rvepp_cli" }
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
+strip = true
